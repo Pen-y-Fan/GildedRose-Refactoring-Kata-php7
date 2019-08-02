@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PSR-2 but Doc Comment stuff removed -->
+<ruleset name="Laravel no comments Standard">
+  <description>The coding standard for Laravel with no comments</description>
+  <rule ref="PSR2">
+    <!-- Include rules related to Doc Comment I don't want -->
+    <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps"/>
+    <exclude ref="Generic.Commenting.DocComment.ShortNotCapital" />
+    <exclude ref="Generic.Commenting.DocComment.SpacingBeforeTags" />
+    <exclude ref="Generic.Commenting.DocComment.TagValueIndent" />
+    <exclude ref="Generic.Commenting.DocComment.NonParamGroup" />
+    <exclude ref="PEAR.Commenting.FileComment.Missing" />
+    <exclude ref="PEAR.Commenting.FileComment.MissingPackageTag" />
+    <exclude ref="PEAR.Commenting.FileComment.PackageTagOrder" />
+    <exclude ref="PEAR.Commenting.FileComment.MissingAuthorTag" />
+    <exclude ref="PEAR.Commenting.FileComment.InvalidAuthors" />
+    <exclude ref="PEAR.Commenting.FileComment.AuthorTagOrder" />
+    <exclude ref="PEAR.Commenting.FileComment.MissingLicenseTag" />
+    <exclude ref="PEAR.Commenting.FileComment.IncompleteLicense" />
+    <exclude ref="PEAR.Commenting.FileComment.LicenseTagOrder" />
+    <exclude ref="PEAR.Commenting.FileComment.MissingLinkTag" />
+    <exclude ref="PEAR.Commenting.ClassComment.Missing" />
+    <exclude ref="PEAR.Commenting.FunctionComment.Missing" />
+    <exclude ref="PEAR.Commenting.FunctionComment.Missing" />
+    <exclude ref="PEAR.Commenting.FunctionComment.MissingParamTag" />
+    <exclude ref="PEAR.Commenting.FunctionComment.MissingParamName" />
+    <exclude ref="PEAR.Commenting.FunctionComment.MissingParamComment" />
+    <exclude ref="PEAR.Commenting.FunctionComment.MissingReturn" />
+    <exclude ref="PEAR.Commenting.FunctionComment.SpacingAfter" />
+  </rule>
+</ruleset>
