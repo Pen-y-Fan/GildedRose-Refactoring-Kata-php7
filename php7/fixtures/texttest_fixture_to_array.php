@@ -26,13 +26,23 @@ $days = 20;
 if (count($argv) > 1) {
     $days = (int) $argv[1];
 }
+$stringItems = [];
+$yesterdaysItems = [];
 
+echo ("Yesterday: name, sellIn, quality, \t Today: name, sellIn, quality\n");
 for ($i = 0; $i < $days; $i++) {
-    echo("-------- day $i --------\n");
-    echo("name, sellIn, quality\n");
+    // echo ("-------- day $i --------\n");
+    $j = 0;
     foreach ($items as $item) {
-        echo $item . PHP_EOL;
+        $stringItems[$j] = "'{$item->name}', {$item->sell_in}, {$item->quality}";
+        if ($i > 0) {
+            echo "[{$yesterdaysItems[$j]}, {$stringItems[$j]}]," . PHP_EOL;
+        }
+        // echo
+        $j++;
     }
-    echo PHP_EOL;
+    $yesterdaysItems = $stringItems;
+
+    // echo PHP_EOL;
     $app->updateQuality();
 }
