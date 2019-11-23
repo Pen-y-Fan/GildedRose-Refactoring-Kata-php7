@@ -4,15 +4,15 @@ namespace Test;
 
 use PHPUnit\Framework\TestCase;
 use App\Item;
-use App\GildedRose;
+use App\GildedRoseFactory;
 
 class GildedRoseTest extends TestCase
 {
     /**
      * @test
-     * @dataProvider data_provider
+     * @dataProvider dataProvider
      */
-    public function gilded_rose(
+    public function GildedRoseFactory(
         $inputName,
         $inputSellIn,
         $inputQuality,
@@ -21,7 +21,7 @@ class GildedRoseTest extends TestCase
         $expectedQuality
     ): void {
         $items      = [new Item($inputName, $inputSellIn, $inputQuality)];
-        $gildedRose = new GildedRose($items);
+        $gildedRose = new GildedRoseFactory($items);
         $gildedRose->updateQuality();
         $this->assertEquals(
             [$expectedName, $expectedSellIn, $expectedQuality],
@@ -29,7 +29,7 @@ class GildedRoseTest extends TestCase
         );
     }
 
-    public function data_provider()
+    public function dataProvider()
     {
         return [
             ['+5 Dexterity Vest', 10, 20, '+5 Dexterity Vest', 9, 19],
@@ -109,18 +109,11 @@ class GildedRoseTest extends TestCase
             ['Elixir of the Mongoose', -3, 0, 'Elixir of the Mongoose', -4, 0],
             ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
             ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', 7, 31, 'Backstage passes to a TAFKAL80ETC concert', 6, 33],
-            ['Backstage passes to a TAFKAL80ETC concert', 2, 50, 'Backstage passes to a TAFKAL80ETC concert', 1, 50],
-            ['Backstage passes to a TAFKAL80ETC concert', -3, 0, 'Backstage passes to a TAFKAL80ETC concert', -4, 0],
-            ['Conjured Mana Cake', -5, 0, 'Conjured Mana Cake', -6, 0],
             ['+5 Dexterity Vest', 1, 11, '+5 Dexterity Vest', 0, 10],
             ['Aged Brie', -7, 16, 'Aged Brie', -8, 18],
             ['Elixir of the Mongoose', -4, 0, 'Elixir of the Mongoose', -5, 0],
             ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
             ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', 6, 33, 'Backstage passes to a TAFKAL80ETC concert', 5, 35],
-            ['Backstage passes to a TAFKAL80ETC concert', 1, 50, 'Backstage passes to a TAFKAL80ETC concert', 0, 50],
-            ['Backstage passes to a TAFKAL80ETC concert', -4, 0, 'Backstage passes to a TAFKAL80ETC concert', -5, 0],
             ['Conjured Mana Cake', -6, 0, 'Conjured Mana Cake', -7, 0],
             ['+5 Dexterity Vest', 0, 10, '+5 Dexterity Vest', -1, 8],
             ['Aged Brie', -8, 18, 'Aged Brie', -9, 20],
@@ -129,84 +122,10 @@ class GildedRoseTest extends TestCase
             ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
             ['Backstage passes to a TAFKAL80ETC concert', 5, 35, 'Backstage passes to a TAFKAL80ETC concert', 4, 38],
             ['Backstage passes to a TAFKAL80ETC concert', 0, 50, 'Backstage passes to a TAFKAL80ETC concert', -1, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -5, 0, 'Backstage passes to a TAFKAL80ETC concert', -6, 0],
-            ['Conjured Mana Cake', -7, 0, 'Conjured Mana Cake', -8, 0],
-            ['+5 Dexterity Vest', -1, 8, '+5 Dexterity Vest', -2, 6],
-            ['Aged Brie', -9, 20, 'Aged Brie', -10, 22],
-            ['Elixir of the Mongoose', -6, 0, 'Elixir of the Mongoose', -7, 0],
-            ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', 4, 38, 'Backstage passes to a TAFKAL80ETC concert', 3, 41],
-            ['Backstage passes to a TAFKAL80ETC concert', -1, 0, 'Backstage passes to a TAFKAL80ETC concert', -2, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -6, 0, 'Backstage passes to a TAFKAL80ETC concert', -7, 0],
-            ['Conjured Mana Cake', -8, 0, 'Conjured Mana Cake', -9, 0],
-            ['+5 Dexterity Vest', -2, 6, '+5 Dexterity Vest', -3, 4],
-            ['Aged Brie', -10, 22, 'Aged Brie', -11, 24],
-            ['Elixir of the Mongoose', -7, 0, 'Elixir of the Mongoose', -8, 0],
-            ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', 3, 41, 'Backstage passes to a TAFKAL80ETC concert', 2, 44],
-            ['Backstage passes to a TAFKAL80ETC concert', -2, 0, 'Backstage passes to a TAFKAL80ETC concert', -3, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -7, 0, 'Backstage passes to a TAFKAL80ETC concert', -8, 0],
-            ['Conjured Mana Cake', -9, 0, 'Conjured Mana Cake', -10, 0],
-            ['+5 Dexterity Vest', -3, 4, '+5 Dexterity Vest', -4, 2],
-            ['Aged Brie', -11, 24, 'Aged Brie', -12, 26],
-            ['Elixir of the Mongoose', -8, 0, 'Elixir of the Mongoose', -9, 0],
-            ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', 2, 44, 'Backstage passes to a TAFKAL80ETC concert', 1, 47],
-            ['Backstage passes to a TAFKAL80ETC concert', -3, 0, 'Backstage passes to a TAFKAL80ETC concert', -4, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -8, 0, 'Backstage passes to a TAFKAL80ETC concert', -9, 0],
-            ['Conjured Mana Cake', -10, 0, 'Conjured Mana Cake', -11, 0],
-            ['+5 Dexterity Vest', -4, 2, '+5 Dexterity Vest', -5, 0],
-            ['Aged Brie', -12, 26, 'Aged Brie', -13, 28],
-            ['Elixir of the Mongoose', -9, 0, 'Elixir of the Mongoose', -10, 0],
-            ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', 1, 47, 'Backstage passes to a TAFKAL80ETC concert', 0, 50],
-            ['Backstage passes to a TAFKAL80ETC concert', -4, 0, 'Backstage passes to a TAFKAL80ETC concert', -5, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -9, 0, 'Backstage passes to a TAFKAL80ETC concert', -10, 0],
-            ['Conjured Mana Cake', -11, 0, 'Conjured Mana Cake', -12, 0],
-            ['+5 Dexterity Vest', -5, 0, '+5 Dexterity Vest', -6, 0],
-            ['Aged Brie', -13, 28, 'Aged Brie', -14, 30],
-            ['Elixir of the Mongoose', -10, 0, 'Elixir of the Mongoose', -11, 0],
-            ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', 0, 50, 'Backstage passes to a TAFKAL80ETC concert', -1, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -5, 0, 'Backstage passes to a TAFKAL80ETC concert', -6, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -10, 0, 'Backstage passes to a TAFKAL80ETC concert', -11, 0],
-            ['Conjured Mana Cake', -12, 0, 'Conjured Mana Cake', -13, 0],
-            ['+5 Dexterity Vest', -6, 0, '+5 Dexterity Vest', -7, 0],
-            ['Aged Brie', -14, 30, 'Aged Brie', -15, 32],
-            ['Elixir of the Mongoose', -11, 0, 'Elixir of the Mongoose', -12, 0],
-            ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', -1, 0, 'Backstage passes to a TAFKAL80ETC concert', -2, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -6, 0, 'Backstage passes to a TAFKAL80ETC concert', -7, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -11, 0, 'Backstage passes to a TAFKAL80ETC concert', -12, 0],
-            ['Conjured Mana Cake', -13, 0, 'Conjured Mana Cake', -14, 0],
-            ['+5 Dexterity Vest', -7, 0, '+5 Dexterity Vest', -8, 0],
-            ['Aged Brie', -15, 32, 'Aged Brie', -16, 34],
-            ['Elixir of the Mongoose', -12, 0, 'Elixir of the Mongoose', -13, 0],
-            ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', -2, 0, 'Backstage passes to a TAFKAL80ETC concert', -3, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -7, 0, 'Backstage passes to a TAFKAL80ETC concert', -8, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -12, 0, 'Backstage passes to a TAFKAL80ETC concert', -13, 0],
-            ['Conjured Mana Cake', -14, 0, 'Conjured Mana Cake', -15, 0],
-            ['+5 Dexterity Vest', -8, 0, '+5 Dexterity Vest', -9, 0],
-            ['Aged Brie', -16, 34, 'Aged Brie', -17, 36],
-            ['Elixir of the Mongoose', -13, 0, 'Elixir of the Mongoose', -14, 0],
-            ['Sulfuras, Hand of Ragnaros', 0, 80, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            ['Sulfuras, Hand of Ragnaros', -1, 80, 'Sulfuras, Hand of Ragnaros', -1, 80],
-            ['Backstage passes to a TAFKAL80ETC concert', -3, 0, 'Backstage passes to a TAFKAL80ETC concert', -4, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -8, 0, 'Backstage passes to a TAFKAL80ETC concert', -9, 0],
-            ['Backstage passes to a TAFKAL80ETC concert', -13, 0, 'Backstage passes to a TAFKAL80ETC concert', -14, 0],
-            ['Conjured Mana Cake', -15, 0, 'Conjured Mana Cake', -16, 0],
             ['Sulfuras, Hand of Ragnaros', 0, 79, 'Sulfuras, Hand of Ragnaros', 0, 80],
             ['Sulfuras, Hand of Ragnaros', 0, 81, 'Sulfuras, Hand of Ragnaros', 0, 80],
-            // ['Elixir of the Mongoose', -13, -1, 'Elixir of the Mongoose', -14, 0],
-            // ['Backstage passes to a TAFKAL80ETC concert', 7, 51, 'Backstage passes to a TAFKAL80ETC concert', 6, 50],
+            ['Elixir of the Mongoose', -13, -1, 'Elixir of the Mongoose', -14, 0],
+            ['Backstage passes to a TAFKAL80ETC concert', 7, 51, 'Backstage passes to a TAFKAL80ETC concert', 6, 50],
         ];
     }
 }
